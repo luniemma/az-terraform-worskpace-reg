@@ -1,0 +1,115 @@
+# Azure SQL Server and Database Terraform Configuration
+
+This Terraform configuration sets up an Azure SQL Server and Database for the CloudDevopsHQ project.
+
+## Resources Created
+
+- Azure Resource Group
+- Azure SQL Server
+- Azure SQL Database
+
+## Prerequisites
+
+- [Terraform](https://www.terraform.io/downloads.html) (version 0.12.x or later)
+- [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+- An Azure subscription
+
+## Configuration
+
+1. Ensure you have the Azure CLI installed and you're logged in:
+
+   ```
+   az login
+   ```
+
+2. Select the appropriate subscription:
+
+   ```
+   az account set --subscription "606e824b-aaf7-4b4e-9057-b459f6a4436d"
+   ```
+
+3. Update the `azure-sql-infrastructure.tf` file if you need to change any settings such as resource names, locations, or SQL administrator credentials.
+
+## Usage
+
+1. Initialize Terraform:
+
+   ```
+   terraform init
+   ```
+
+2. Preview the changes:
+
+   ```
+   terraform plan
+   ```
+
+3. Apply the configuration:
+
+   ```
+   terraform apply
+   ```
+
+   Type `yes` when prompted to create the resources.
+
+4. After successful creation, Terraform will output the names of the created SQL Server and Database.
+
+## Clean Up
+
+To remove all created resources:
+
+```
+terraform destroy
+```
+
+Type `yes` when prompted to destroy the resources.
+
+## Security Considerations
+
+- The SQL Server administrator password is stored in plain text in the Terraform file. For production use, consider using Azure Key Vault or environment variables to manage sensitive information.
+- The configuration creates a public SQL Server. For production environments, consider implementing additional security measures such as firewalls and virtual networks.
+
+## Customization
+
+You can modify the `azure-sql-infrastructure.tf` file to change:
+
+- Resource names
+- Azure region
+- SQL Server version
+- Database SKU
+- Tags
+
+## Troubleshooting
+
+If you encounter issues:
+
+1. Ensure you're logged in to the correct Azure subscription.
+2. Check that you have the necessary permissions to create resources.
+3. Verify that the resource names are unique across Azure.
+
+For more detailed error messages, you can set the `TF_LOG` environment variable:
+
+```
+export TF_LOG=DEBUG
+```
+
+## Contributing
+
+Please read our contributing guidelines before submitting pull requests or opening issues.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+###############################################################################
+This README provides a comprehensive guide for using and understanding the Terraform configuration for the Azure SQL Server and Database. It includes sections on:
+
+An overview of the resources created
+Prerequisites
+Configuration steps
+Usage instructions
+Clean-up process
+Security considerations
+Customization options
+Troubleshooting tips
+Contributing guidelines
+License information

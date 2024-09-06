@@ -1,0 +1,126 @@
+# az-terraform-worskpace-reg
+# Cloud Data DevOps Terraform Project
+
+This Terraform project sets up Azure Data Factory and Azure Databricks for the clouddatadevops project. It follows best practices for Azure resource deployment using Terraform, including modular structure, naming conventions, and proper use of variables and outputs.
+
+## Project Structure
+
+```
+.
+├── main.tf
+├── variables.tf
+├── outputs.tf
+├── README.md
+└── modules/
+    ├── data_factory/
+    │   └── main.tf
+    └── databricks/
+        └── main.tf
+```
+
+## Prerequisites
+
+- [Terraform](https://www.terraform.io/downloads.html) (v1.0.0 or newer)
+- [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+- An Azure subscription
+
+## Configuration
+
+The main configuration is defined in `main.tf`. It sets up:
+
+- An Azure Resource Group
+- An Azure Data Factory (using a custom module)
+- An Azure Databricks workspace (using a custom module)
+
+You can customize the deployment by modifying the variables in `variables.tf`. The default values are:
+
+- Resource Group: `rg-clouddatadevops-001`
+- Location: `East US`
+- Data Factory: `adf-clouddatadevops-001`
+- Databricks Workspace: `dbw-clouddatadevops-001`
+
+## Usage
+
+1. Clone this repository:
+   ```
+   git clone <repository-url>
+   cd clouddatadevops-terraform
+   ```
+
+2. Log in to Azure:
+   ```
+   az login
+   ```
+
+3. Initialize Terraform:
+   ```
+   terraform init
+   ```
+
+4. Review the planned changes:
+   ```
+   terraform plan
+   ```
+
+5. Apply the Terraform configuration:
+   ```
+   terraform apply
+   ```
+
+6. When prompted, type `yes` to confirm the creation of the resources.
+
+## Outputs
+
+After successful application, Terraform will output:
+
+- The Resource Group ID
+- The Data Factory ID
+- The Databricks Workspace URL
+
+You can view these outputs at any time by running:
+```
+terraform output
+```
+
+## Cleaning Up
+
+To remove all resources created by this Terraform configuration:
+
+```
+terraform destroy
+```
+
+**Caution**: This will permanently delete all resources managed by this Terraform configuration. Make sure you really want to do this before confirming.
+
+## Contributing
+
+Contributions to improve the project are welcome. Please follow these steps:
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Disclaimer
+
+This Terraform configuration is provided as-is, without any guarantees or warranty. The authors are not responsible for any damage or data loss that may occur from using this configuration.
+
+Always review and test Terraform plans before applying them to your Azure environment, especially in production scenarios.
+##################################################################################################################################################################################################################################################################################
+This README.md file provides a comprehensive overview of your Terraform project for setting up Azure Data Factory and Azure Databricks. It includes:
+
+A brief introduction to the project
+The project structure
+Prerequisites
+Configuration details
+Usage instructions
+Information about outputs
+Cleanup instructions
+Guidelines for contributing
+A license statement
+A disclaimer

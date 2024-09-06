@@ -1,0 +1,515 @@
+Terraform Azure Infrastructure
+This repository contains Terraform code for setting up essential infrastructure on Microsoft Azure, such as a Resource Group, Virtual Network, and other services.
+
+Prerequisites
+Before using this Terraform configuration, ensure you have the following tools installed:
+
+Terraform (v1.x or later)
+An active Azure subscription
+Azure CLI for authentication
+Getting Started
+Clone the repository
+
+bash
+Copy code
+git clone <repository-url>
+cd <repository-directory>
+Configure your Azure credentials
+
+You can log in to Azure using the Azure CLI:
+
+bash
+Copy code
+az login
+Initialize Terraform
+
+Terraform uses modules and plugins that need to be initialized. Run the following command:
+
+bash
+Copy code
+terraform init
+Customize Variables (Optional)
+
+If your configuration includes variables, create a terraform.tfvars file or modify the default values in the main.tf file. For example, to change the location or resource names, update the values accordingly.
+
+Apply the Configuration
+
+To create the infrastructure on Azure, run the following command:
+
+bash
+Copy code
+terraform apply
+Terraform will prompt you to confirm the action. Type yes to proceed.
+
+Review the Infrastructure
+
+After the deployment, you can verify the infrastructure in the Azure portal or use the Azure CLI to check the status:
+
+bash
+Copy code
+az group show --name aks-resource-group
+Resources Created
+This configuration sets up the following Azure resources:
+
+Resource Group: aks-resource-group in the East US region.
+Virtual Network: aks-vnet with the address space 10.0.0.0/16.
+Additional resources may be configured in the main.tf file based on your infrastructure needs.
+
+Cleanup
+To remove the infrastructure, run the following command:
+
+bash
+Copy code
+terraform destroy
+This will delete all resources that were created by this Terraform configuration.
+
+Notes
+Ensure that your Azure subscription has sufficient quotas and permissions to create the resources defined.
+This configuration can be customized to suit your specific infrastructure requirements by modifying the main.tf file.
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+This README provides an overview and instructions for working with the Terraform configuration. Let me know if you need any further details! ​​
+####################################################################################
+######################################################################################
+# az-terraform-worskpace-reg
+# Cloud Data DevOps Terraform Project
+
+This Terraform project sets up Azure Data Factory and Azure Databricks for the clouddatadevops project. It follows best practices for Azure resource deployment using Terraform, including modular structure, naming conventions, and proper use of variables and outputs.
+
+## Project Structure
+
+```
+.
+├── main.tf
+├── variables.tf
+├── outputs.tf
+├── README.md
+└── modules/
+    ├── data_factory/
+    │   └── main.tf
+    └── databricks/
+        └── main.tf
+```
+
+## Prerequisites
+
+- [Terraform](https://www.terraform.io/downloads.html) (v1.0.0 or newer)
+- [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+- An Azure subscription
+
+## Configuration
+
+The main configuration is defined in `main.tf`. It sets up:
+
+- An Azure Resource Group
+- An Azure Data Factory (using a custom module)
+- An Azure Databricks workspace (using a custom module)
+
+You can customize the deployment by modifying the variables in `variables.tf`. The default values are:
+
+- Resource Group: `rg-clouddatadevops-001`
+- Location: `East US`
+- Data Factory: `adf-clouddatadevops-001`
+- Databricks Workspace: `dbw-clouddatadevops-001`
+
+## Usage
+
+1. Clone this repository:
+   ```
+   git clone <repository-url>
+   cd clouddatadevops-terraform
+   ```
+
+2. Log in to Azure:
+   ```
+   az login
+   ```
+
+3. Initialize Terraform:
+   ```
+   terraform init
+   ```
+
+4. Review the planned changes:
+   ```
+   terraform plan
+   ```
+
+5. Apply the Terraform configuration:
+   ```
+   terraform apply
+   ```
+
+6. When prompted, type `yes` to confirm the creation of the resources.
+
+## Outputs
+
+After successful application, Terraform will output:
+
+- The Resource Group ID
+- The Data Factory ID
+- The Databricks Workspace URL
+
+You can view these outputs at any time by running:
+```
+terraform output
+```
+
+## Cleaning Up
+
+To remove all resources created by this Terraform configuration:
+
+```
+terraform destroy
+```
+
+**Caution**: This will permanently delete all resources managed by this Terraform configuration. Make sure you really want to do this before confirming.
+
+## Contributing
+
+Contributions to improve the project are welcome. Please follow these steps:
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Disclaimer
+
+This Terraform configuration is provided as-is, without any guarantees or warranty. The authors are not responsible for any damage or data loss that may occur from using this configuration.
+
+Always review and test Terraform plans before applying them to your Azure environment, especially in production scenarios.
+##################################################################################################################################################################################################################################################################################
+This README.md file provides a comprehensive overview of your Terraform project for setting up Azure Data Factory and Azure Databricks. It includes:
+
+A brief introduction to the project
+The project structure
+Prerequisites
+Configuration details
+Usage instructions
+Information about outputs
+Cleanup instructions
+Guidelines for contributing
+A license statement
+A disclaimer
+
+###################################################################################################
+#####################################################################################################
+# Azure SQL Server and Database Terraform Configuration
+
+This Terraform configuration sets up an Azure SQL Server and Database for the CloudDevopsHQ project.
+
+## Resources Created
+
+- Azure Resource Group
+- Azure SQL Server
+- Azure SQL Database
+
+## Prerequisites
+
+- [Terraform](https://www.terraform.io/downloads.html) (version 0.12.x or later)
+- [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+- An Azure subscription
+
+## Configuration
+
+1. Ensure you have the Azure CLI installed and you're logged in:
+
+   ```
+   az login
+   ```
+
+2. Select the appropriate subscription:
+
+   ```
+   az account set --subscription "606e824b-aaf7-4b4e-9057-b459f6a4436d"
+   ```
+
+3. Update the `azure-sql-infrastructure.tf` file if you need to change any settings such as resource names, locations, or SQL administrator credentials.
+
+## Usage
+
+1. Initialize Terraform:
+
+   ```
+   terraform init
+   ```
+
+2. Preview the changes:
+
+   ```
+   terraform plan
+   ```
+
+3. Apply the configuration:
+
+   ```
+   terraform apply
+   ```
+
+   Type `yes` when prompted to create the resources.
+
+4. After successful creation, Terraform will output the names of the created SQL Server and Database.
+
+## Clean Up
+
+To remove all created resources:
+
+```
+terraform destroy
+```
+
+Type `yes` when prompted to destroy the resources.
+
+## Security Considerations
+
+- The SQL Server administrator password is stored in plain text in the Terraform file. For production use, consider using Azure Key Vault or environment variables to manage sensitive information.
+- The configuration creates a public SQL Server. For production environments, consider implementing additional security measures such as firewalls and virtual networks.
+
+## Customization
+
+You can modify the `azure-sql-infrastructure.tf` file to change:
+
+- Resource names
+- Azure region
+- SQL Server version
+- Database SKU
+- Tags
+
+## Troubleshooting
+
+If you encounter issues:
+
+1. Ensure you're logged in to the correct Azure subscription.
+2. Check that you have the necessary permissions to create resources.
+3. Verify that the resource names are unique across Azure.
+
+For more detailed error messages, you can set the `TF_LOG` environment variable:
+
+```
+export TF_LOG=DEBUG
+```
+
+## Contributing
+
+Please read our contributing guidelines before submitting pull requests or opening issues.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+###############################################################################
+This README provides a comprehensive guide for using and understanding the Terraform configuration for the Azure SQL Server and Database. It includes sections on:
+
+An overview of the resources created
+Prerequisites
+Configuration steps
+Usage instructions
+Clean-up process
+Security considerations
+Customization options
+Troubleshooting tips
+Contributing guidelines
+License information
+########################################################################################################################################
+#########################################################################################
+
+# Terraform Azure VM Deployment
+
+This Terraform project deploys multiple virtual machines in Microsoft Azure along with the necessary networking infrastructure.
+
+## Project Structure
+
+The project consists of the following files:
+
+- `main.tf`: Main Terraform configuration file
+- `variables.tf`: Variable definitions
+- `outputs.tf`: Output definitions
+- `terraform.tfvars`: Variable values
+
+## Prerequisites
+
+- [Terraform](https://www.terraform.io/downloads.html) installed (version ~> 2.65)
+- An Azure subscription
+- Azure CLI installed and authenticated
+
+## Configuration
+
+1. Clone this repository to your local machine.
+2. Navigate to the project directory.
+3. Review and modify the `terraform.tfvars` file to customize your deployment. Be sure to change the `admin_password` to a secure value.
+
+## Deployment
+
+To deploy the infrastructure:
+
+1. Initialize Terraform:
+   ```
+   terraform init
+   ```
+
+2. Review the planned changes:
+   ```
+   terraform plan
+   ```
+
+3. Apply the configuration:
+   ```
+   terraform apply
+   ```
+
+4. When prompted, type `yes` to confirm the deployment.
+
+## Resources Created
+
+This Terraform configuration creates the following resources:
+
+- 1 Resource Group
+- 1 Virtual Network with 1 Subnet
+- 4 Virtual Machines
+- Associated network interfaces and public IP addresses
+
+## Modules
+
+The project uses two modules:
+
+1. `network`: Creates the virtual network and subnet
+2. `vm`: Creates virtual machines (used in a loop to create multiple VMs)
+
+## Outputs
+
+After a successful deployment, Terraform will output the following information:
+
+- VM IDs
+- Public IPs of the VMs
+
+## Variables
+
+Key variables that can be configured in `terraform.tfvars`:
+
+- `resource_group_name`: Name of the resource group
+- `location`: Azure region for resource deployment
+- `vnet_name`: Name of the virtual network
+- `vnet_address_space`: Address space for the virtual network
+- `subnet_name`: Name of the subnet
+- `subnet_prefixes`: Address prefixes for the subnet
+- `vm_name_prefix`: Prefix for VM names
+- `admin_username`: Admin username for VMs
+- `admin_password`: Admin password for VMs (sensitive)
+
+## Clean Up
+
+To destroy the created resources and avoid unnecessary costs:
+
+```
+terraform destroy
+```
+
+When prompted, type `yes` to confirm the deletion of resources.
+
+## Security Note
+
+Remember to keep your `terraform.tfvars` file secure and never commit it to version control with sensitive information like passwords. Consider using Azure Key Vault or environment variables for managing sensitive data in production environments.
+#########################################################################
+
+################################################################################
+# Terraform Mixed OS VM Deployment
+
+This Terraform project deploys a set of virtual machines with different operating systems (Windows, Ubuntu, and Red Hat Enterprise Linux) in Microsoft Azure. It also sets up the necessary networking infrastructure.
+
+## Project Structure
+
+The project consists of the following files:
+
+- `main.tf`: Main Terraform configuration file
+- `variables.tf`: Variable definitions
+- `outputs.tf`: Output definitions
+- `terraform.tfvars`: Variable values
+- `vm-SR.tf`: Additional configuration for VM Site Recovery (not directly used in main deployment)
+
+## Prerequisites
+
+- [Terraform](https://www.terraform.io/downloads.html) installed (version ~> 2.65)
+- An Azure subscription
+- Azure CLI installed and authenticated
+
+## Configuration
+
+1. Clone this repository to your local machine.
+2. Navigate to the project directory.
+3. Review and modify the `terraform.tfvars` file to customize your deployment. Be sure to change the `admin_password` to a secure value.
+
+## Deployment
+
+To deploy the infrastructure:
+
+1. Initialize Terraform:
+   ```
+   terraform init
+   ```
+
+2. Review the planned changes:
+   ```
+   terraform plan
+   ```
+
+3. Apply the configuration:
+   ```
+   terraform apply
+   ```
+
+4. When prompted, type `yes` to confirm the deployment.
+
+## Resources Created
+
+This Terraform configuration creates the following resources:
+
+- 1 Resource Group
+- 1 Virtual Network with 1 Subnet
+- 1 Windows Server VM
+- 2 Ubuntu Server VMs
+- 1 Red Hat Enterprise Linux VM
+- Associated network interfaces and public IP addresses
+
+## Outputs
+
+After a successful deployment, Terraform will output the following information:
+
+- Windows VM ID and Public IP
+- Ubuntu VMs IDs and Public IPs
+- RHEL VM ID and Public IP
+
+## Clean Up
+
+To destroy the created resources and avoid unnecessary costs:
+
+```
+terraform destroy
+```
+
+When prompted, type `yes` to confirm the deletion of resources.
+
+## Note on VM-SR.tf
+
+The `vm-SR.tf` file contains additional configuration for VM Site Recovery. This file is not directly used in the main deployment but can be integrated if you want to set up disaster recovery for your VMs.
+
+## Security Note
+
+Remember to keep your `terraform.tfvars` file secure and never commit it to version control with sensitive information like passwords. Consider using Azure Key Vault or environment variables for managing sensitive data in production environments.
+
+The README includes sections on:
+
+Project structure
+Prerequisites
+Configuration
+Deployment instructions
+Resources created
+Outputs
+Clean-up instructions
+A note on the vm-SR.tf file
+Security considerations
